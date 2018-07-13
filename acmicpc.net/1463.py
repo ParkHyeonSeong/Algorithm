@@ -1,20 +1,25 @@
 n = int(input())
-count = 0
+_min = []
 
-while(n != 1):
-    if n%3 == 0:  # 3으로 쪼개질때
-        n /= 3
-        count += 1
-    elif n % 2 == 0:  # 2로 쪼개지면 2분의1로 잘라질 수 있음
-        if (n-1) % 3 == 0:  # 그러나 1을 빼고 3분의1로 자르면 더 작아질 수 있으므로
-            n -= 1
-            n /= 3
-            count += 2
-        else:
-            n /= 2
-            count += 1
-    else:   # 2와3의 배수 모두 해당하지않으면 1을 뺌
-        n -= 1
-        count += 1
+for i in range(n+1):
+    _min.append(0)
+_min[1] = 0 # 조건 명시
+_min[2] = 1
+_min[3] = 1
 
-print(count)
+temp = 0    # 비교를 위한 임시 저장
+
+for i in range(4,n+1):
+    _min[i] = _min[i-1] + 1 # 최대횟수 설정
+
+    if i % 2 == 0:  # 나눠질때
+        temp = _min[i // 2] + 1  # 자신이 나뉘어진 숫자의 최소횟수보다
+        if temp < _min[i]:  # 적으면
+            _min[i] = temp  # 그것이 즉 최소 횟수
+
+    if i % 3 == 0:
+        temp = _min[i // 3] + 1
+        if temp < _min[i]:
+            _min[i] = temp
+
+print(_min[n])
