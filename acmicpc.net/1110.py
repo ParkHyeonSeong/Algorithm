@@ -23,7 +23,7 @@ while num != f_num: # 입력값과 계산된 값이 같을 떄까지 반복
         temp.append("0")
         temp.extend(list(str(t1+t2)))  # 재스플릿
 
-        f_num = str(t2) + str(temp[1])  # 결과값과 더해진 숫자의 일의 자리를 str로 합하여 저장
+    f_num = str(t2) + str(temp[1])  # 결과값과 더해진 숫자의 일의 자리를 str로 합하여 저장 # 이 문장 들여쓰기 잘못해서 시간초과됐었다..;
 
     t1 = t2
     t2 = int(temp[1])    # 결과값의 뒷자리를 t2로 할당
