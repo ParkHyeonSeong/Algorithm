@@ -14,13 +14,16 @@ for i in range(t):	# 입력을 총 t번 받음
 	elif n == 3:
 		total = m3
 	else:
-		while sum(n_list) <= n-3:
+		while sum(n_list) + 3 <= n:
 			n_list.append(3)
-		n_list.append(int(n%3))
-
-		print(n_list)
+		while sum(n_list) + 2 <= n:
+			n_list.append(3)
+		while sum(n_list) + 1 <= n:
+			n_list.append(3)
 
 		for i2 in range(len(n_list)):
+			print(n_list)
+			print(total)
 			a = n_list.pop()
 			if a == 3:
 				n_list.append(2)
@@ -30,8 +33,10 @@ for i in range(t):	# 입력을 총 t번 받음
 				n_list.append(1)
 				n_list.append(1)
 				total += 1
-			elif a == 1:
-				total
+			elif a == 1 and n_list.count(1) != n+1:
+				n_list.insert(1,1)
+				total += 1
+
 
 
 	print(total)
