@@ -1,44 +1,28 @@
-t = int(input())
-n_list = [0]
-m1 = 1
-m2 = 2
-m3 = 4
+# 아 공식을 세우면 쉽게 풀리는 문제인데 자그마치 3시간정도 걸렸다...
+# 아직 동적프로그래밍의 개념이 잡히지 않은듯 하다...
 
-for i in range(t):	# 입력을 총 t번 받음
-	total = 0
+t = int(input())
+
+for i in range(t):	# 입력을 총 t번 받음	
+	n_list = [0,1,2,4]
+	flag = 1
 	n = int(input())
 	if n == 1:
-		total = m1
+		total = n_list[1]
+		flag = 0
 	elif n == 2:
-		total = m2
+		total = n_list[2]
+		flag = 0
 	elif n == 3:
-		total = m3
-	else:
-		while sum(n_list) + 3 <= n:
-			n_list.append(3)
-		while sum(n_list) + 2 <= n:
-			n_list.append(3)
-		while sum(n_list) + 1 <= n:
-			n_list.append(3)
+		total = n_list[3]
+		flag = 0
 
-		for i2 in range(len(n_list)):
-			print(n_list)
-			print(total)
-			a = n_list.pop()
-			if a == 3:
-				n_list.append(2)
-				n_list.append(1)
-				total += 1
-			elif a == 2:
-				n_list.append(1)
-				n_list.append(1)
-				total += 1
-			elif a == 1 and n_list.count(1) != n+1:
-				n_list.insert(1,1)
-				total += 1
+	if flag == 1:
+		for i in range(4,n+1):
+			n_list.append(n_list[i-1] + n_list[i-2] + n_list[i-3])
+		print(str(n_list[len(n_list)-1]))
+	else :
+		print(total)
+		flag = 1
 
-
-
-	print(total)
-n_list.clear()
-total = 0
+	n_list.clear()
