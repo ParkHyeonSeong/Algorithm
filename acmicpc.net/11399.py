@@ -17,6 +17,9 @@
 
 n = int(input())
 t = input().split(" ")
+for i in range(n):
+    t[i] = int(t[i])
+
 t.sort()    # 정렬
 result = 0
 
