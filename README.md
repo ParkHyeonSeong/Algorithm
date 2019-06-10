@@ -5,3 +5,6 @@
 
 ### 2018 KAKAO CODE FESTIVAL NEWLINE
 - 카카오 코드 페스티벌
+
+### 2019 ChickenReallyGood
+- 백준 온라인 저지 대회
